@@ -10,21 +10,16 @@ public class Main {
     private static final int SIZE = 10;
 
     public void writeList() {
-        PrintWriter out = null;
-        try {
-            System.out.println("Entered try statement");
-            out = new PrintWriter(new FileWriter("OutFile.txt"));
+        try (PrintWriter out = new PrintWriter(new FileWriter("OutFile.txt"))) {
             for (int i = 0; i < SIZE; i++) {
                 out.println("Value at: " + i + " = " + list.get(i));
             }
         }
         catch (IndexOutOfBoundsException e) {
-            System.err.println("IndexOutOfBoundsException: " + e.getMessage());
-        } catch (IOException e) {
-            System.err.println("Caught IOException: " + e.getMessage());
-        }finally {
-            out.close();
-        }
+                System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+            } catch (IOException e) {
+                System.err.println("Caught IOException: " + e.getMessage());
+            }
     }
 
     public static void main(String[] args) {
