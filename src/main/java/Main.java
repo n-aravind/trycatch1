@@ -22,6 +22,8 @@ public class Main {
             System.err.println("IndexOutOfBoundsException: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("Caught IOException: " + e.getMessage());
+        }finally {
+            out.close();
         }
     }
 
